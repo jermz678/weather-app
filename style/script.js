@@ -15,7 +15,7 @@ var showRecentSearches = function() {
     recentList.style.fontStyle = "bold";
     let recentSearch = JSON.parse(localStorage.getItem("city"));
     for( let i = 0; i < recentSearch.length; i ++){
-	    showSearch = document.createElement("button");
+	    const showSearch = document.createElement("button");
         showSearch.style.marginTop = "10px";
         showSearch.style.backgroundColor = "#275DAD";
         showSearch.style.color = "white";
@@ -27,13 +27,11 @@ var showRecentSearches = function() {
         showSearch.addEventListener("click", function(){
             alert(showSearch.textContent);
             userInput = showSearch.textContent;
+            console.log(userInput)
             searchApi();
             fiveDayForecast();
-           
-        
         })
-	}
-    
+    }
 }
 showRecentSearches()
 
