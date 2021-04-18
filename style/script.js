@@ -9,27 +9,30 @@ var recentList = document.getElementById("search-list");
 
 //show current weather
 var showingDailyWeather = document.getElementById("current-weather")
-var showSearch
+
 var showRecentSearches = function() {
     recentList.innerHTML = "";
     recentList.style.fontStyle = "bold";
+    if(localStorage.length > 0){
     let recentSearch = JSON.parse(localStorage.getItem("city"));
-    for( let i = 0; i < recentSearch.length; i ++){
-	    const showSearch = document.createElement("button");
-        showSearch.style.marginTop = "10px";
-        showSearch.style.backgroundColor = "#275DAD";
-        showSearch.style.color = "white";
-        showSearch.style.borderRadius = "10px";
-        showSearch.style.width = "88px";
-        showSearch.style.outline = "none";
-        showSearch.innerHTML = recentSearch[i];
-		recentList.appendChild(showSearch)
-        showSearch.addEventListener("click", function(){
-            userInput = showSearch.textContent;
-            console.log(userInput)
-            searchApi();
-            fiveDayForecast();
-        })
+        for( let i = 0; i < recentSearch.length; i ++){
+	        const showSearch = document.createElement("button");
+            showSearch.style.marginTop = "10px";
+            showSearch.style.backgroundColor = "#275DAD";
+            showSearch.style.color = "white";
+            showSearch.style.borderRadius = "10px";
+            showSearch.style.width = "88px";
+            showSearch.style.outline = "none";
+            showSearch.innerHTML = recentSearch[i];
+		    recentList.appendChild(showSearch)
+            showSearch.addEventListener("click", function(){
+                userInput = showSearch.textContent;
+                console.log(userInput)
+                searchApi();
+                fiveDayForecast();
+            })
+    
+        }
     }
 }
 showRecentSearches()
