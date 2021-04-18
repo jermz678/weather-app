@@ -27,7 +27,6 @@ var showRecentSearches = function() {
 		    recentList.appendChild(showSearch)
             showSearch.addEventListener("click", function(){
                 userInput = showSearch.textContent;
-                console.log(userInput)
                 searchApi();
                 fiveDayForecast();
             })
@@ -50,7 +49,6 @@ var searchApi = function (){
         return response.json();
     })
     .then(function(data){
-        console.log(data.coord);
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
     fetch(
@@ -73,7 +71,6 @@ var searchApi = function (){
         //current UV index
          var currentUV = data.current.uvi;
          var currentIcon = data.current.weather[0].icon;
-    console.log(currentIcon)
         //show current Icon
         var currentIconDisplay = document.createElement("img")
         currentIconDisplay.src = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png"
@@ -267,6 +264,9 @@ var fiveDayForecast = function(){
 // save user input to local storage
 //and call api functions
 var searchCity = function(){
+    if(localStorage.length > 0){
+        searchArray = JSON.parse(localStorage.getItem("city"));
+    }
     //getting value of textarea
     userInput = $.trim($("#user-input").val());
     //pushing that to an array
