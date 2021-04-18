@@ -78,7 +78,8 @@ h3 {
 .current-info {
     text-align: center;
     list-style: none;
-
+    padding-left: 250px;
+    padding-right: 250px;
 }
 
 li {

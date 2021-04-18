@@ -25,7 +25,6 @@ var showRecentSearches = function() {
         showSearch.innerHTML = recentSearch[i];
 		recentList.appendChild(showSearch)
         showSearch.addEventListener("click", function(){
-            alert(showSearch.textContent);
             userInput = showSearch.textContent;
             console.log(userInput)
             searchApi();
@@ -78,7 +77,7 @@ var searchApi = function (){
         showingDailyWeather.appendChild(currentIconDisplay)
         //show current date
         var currentDateDisplay = document.createElement("li");
-        currentDateDisplay.innerHTML = userInput + " " + currentDay;
+        currentDateDisplay.innerHTML = userInput + "  " + currentDay;
         showingDailyWeather.appendChild(currentDateDisplay)
         //show current temp
         var currentTempDisplay = document.createElement("li");
@@ -96,7 +95,15 @@ var searchApi = function (){
         var currentUvDisplay = document.createElement("li");
         currentUvDisplay.innerHTML = "UV index: " + currentUV;
         showingDailyWeather.appendChild(currentUvDisplay);
-
+        if(currentUV <= 2.9){
+            currentUvDisplay.style.backgroundColor = "green";
+        }
+        else if(currentUV <= 5.9){
+            currentUvDisplay.style.backgroundColor = "orange";
+        }
+        else{
+            currentUvDisplay.style.backgroundColor = "red";
+        }
     })
 })}
 
