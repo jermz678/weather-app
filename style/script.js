@@ -90,11 +90,6 @@ var searchApi = function (){
 })}
 
 //variables to hold five day forecast
-var day1 = document.getElementById("day1");
-var day2 = document.getElementById("day2");
-var day3 = document.getElementById("day3");
-var day4 = document.getElementById("day4");
-var day5 = document.getElementById("day5");
 var day1List = document.getElementById("day1List");
 var day2List = document.getElementById("day2List");
 var day3List = document.getElementById("day3List");
@@ -103,8 +98,6 @@ var day5List = document.getElementById("day5List");
 
 //function for five day forecast call to api
 var fiveDayForecast = function(){
-    
-        showingDailyWeather.innerHTML = ""
         fetch(
             "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=06d97477f39a3a5f5e609c4ab7a291b1"
         )
@@ -223,24 +216,32 @@ var fiveDayForecast = function(){
              day4HumidDisplay.innerHTML = "Humidity: " + humidDay4 + "%";
              day4List.appendChild(day4HumidDisplay);
 
- 
-            
-
-
-
-
-
-        })
-
-    
+            //get day 5 data
+            var tempDay5 = data.daily[5].temp.day;
+            var windDay5 = data.daily[5].wind_speed;
+            var humidDay5 = data.daily[5].humidity;
+            var iconDay5 = data.daily[5].weather[0].icon;
+            var day5Data = data.daily[5].dt;
+            var day5Date = dayjs.unix(day5Data).format("MMMM DD, YYYY");
+            //display day 5 data
+            var day5DateDisplay = document.createElement("li");
+            day5DateDisplay.innerHTML = day5Date;
+            day5List.appendChild(day5DateDisplay);
+            var day5IconDisplay = document.createElement("img");
+            day5IconDisplay.src =  "http://openweathermap.org/img/wn/" + iconDay5 + "@2x.png";
+            day5List.appendChild(day5IconDisplay);
+            var day5TempDisplay = document.createElement("li");
+            day5TempDisplay.innerHTML = "Temp: " + tempDay5;
+            day5List.appendChild(day5TempDisplay);
+            var day5WindDisplay = document.createElement("li");
+            day5WindDisplay.innerHTML = "Wind Speed: " + windDay5;
+            day5List.appendChild(day5WindDisplay);
+            var day5HumidDisplay = document.createElement("li");
+            day5HumidDisplay.innerHTML = "Humidity: " + humidDay5 + "%";
+            day5List.appendChild(day5HumidDisplay);
+    })
+   
 })}
-
-
-
-
-
-
-
 
 // save user input to local storage
 //and call api functions
