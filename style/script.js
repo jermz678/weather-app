@@ -39,7 +39,7 @@ showRecentSearches()
 //variable for user Input
 var userInput
 
-//Your API key is 06d97477f39a3a5f5e609c4ab7a291b1
+//function to call current weather
 var searchApi = function (){
     showingDailyWeather.innerHTML = ""
     fetch(
