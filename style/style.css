@@ -58,8 +58,14 @@
     margin-top: 20px;
     font-family: 'Source Serif Pro', serif;
 }
+
+li {
+    font-family: 'Source Serif Pro', serif; 
+    font-weight: bold;
+    margin: 6px;
+}
 /* current weather styling */
-.current-weather {
+.current-weather-holder {
     width: 65%;
     height: 400px;
     border: 3px solid #CED3DC;
@@ -68,6 +74,18 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.current-info {
+    text-align: center;
+    list-style: none;
+
+}
+
+img {
+width: 50px;
+height: 50px;
+
+}
 /*five day forcast styling */
 .five-day {
     width: 65%;
@@ -75,9 +93,21 @@
     border: 3px solid #CED3DC;
     float: right;
     margin-right: 50px;
+    display: flex;
+    justify-content: space-evenly;
+
 }
 .five-day h3 {
     font-family: 'Source Serif Pro', serif;
     margin-left: 20px;
 }
 
+.dayforecast {
+    border-width: 5px;
+    border-color: red;
+    border-style: solid;
+
+}
+ul {
+    list-style: none; 
+}

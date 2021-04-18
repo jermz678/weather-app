@@ -17,22 +17,38 @@
 
         <div class="search">
             <h2>Search for a city!</h2>
-            <textarea class="input"  id="user-input"placeholder="City"></textarea>
+            <textarea class="input"  id="user-input" placeholder="City"></textarea>
             <button onclick="searchCity()" class="btn" id="search-button">Search</button>
         </div>
 
-        <div class="current-weather">
+        <div class="current-weather-holder">
+            <ul class="current-info" id="current-weather">
 
+            </ul>
         </div>
 
         <div class="five-day">
             <h3>Five Day Forecast:</h3>
-
+                <div class="dayforecast" id="day1">
+                    <ul id="day1List"></ul>
+                </div>
+                <div class="dayforecast" id="day2">
+                    <ul id="day2List"></ul>
+                </div>
+                <div class="dayforecast" id="day3">
+                    <ul id="day3List"></ul>
+                </div>
+                <div class="dayforecast" id="day4">
+                    <ul id="day4List"></ul>
+                </div>
+                <div class="dayforecast" id="day5">
+                    <ul id="day5List"></ul>
+                </div>
         </div>
 
         <div class="recent-searches">
             <h3>Recent Searches</h3>
-            <ul class="list-of-search">
+            <ul class="list-of-search" id="search-list">
 
             </ul>
         </div>
@@ -58,7 +74,7 @@
 
    
     </main>
-
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./style/script.js"></script>
 </body>
