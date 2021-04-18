@@ -9,16 +9,31 @@ var recentList = document.getElementById("search-list");
 
 //show current weather
 var showingDailyWeather = document.getElementById("current-weather")
-
+var showSearch
 var showRecentSearches = function() {
     recentList.innerHTML = "";
+    recentList.style.fontStyle = "bold";
     let recentSearch = JSON.parse(localStorage.getItem("city"));
     for( let i = 0; i < recentSearch.length; i ++){
-		var showSearch = document.createElement("li");
-        showSearch.style.listStyle = "none";
-		showSearch.innerHTML = recentSearch[i];
+	    showSearch = document.createElement("button");
+        showSearch.style.marginTop = "10px";
+        showSearch.style.backgroundColor = "#275DAD";
+        showSearch.style.color = "white";
+        showSearch.style.borderRadius = "10px";
+        showSearch.style.width = "88px";
+        showSearch.style.outline = "none";
+        showSearch.innerHTML = recentSearch[i];
 		recentList.appendChild(showSearch)
+        showSearch.addEventListener("click", function(){
+            alert(showSearch.textContent);
+            userInput = showSearch.textContent;
+            searchApi();
+            fiveDayForecast();
+           
+        
+        })
 	}
+    
 }
 showRecentSearches()
 
@@ -38,8 +53,6 @@ var searchApi = function (){
         console.log(data.coord);
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
-        console.log(latitude)
-        console.log(longitude)
     fetch(
         "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude +
         "&units=imperial&exclude=minutely,hourly&appid=06d97477f39a3a5f5e609c4ab7a291b1"
@@ -252,7 +265,6 @@ var searchCity = function(){
     searchArray.push(userInput);
     recentSearch = localStorage.setItem("city", JSON.stringify(searchArray));
     $("#user-input").val("");
-    console.log(searchArray)
     showRecentSearches();
     searchApi();
     fiveDayForecast();
@@ -260,4 +272,3 @@ var searchCity = function(){
 
 
 
- 
